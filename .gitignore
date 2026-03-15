@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.env
+venv/
+.venv
+tasks-venv/
+oracle_outputs.txt
+ciphers_and_challenges/oracle_outputs.txt
+ciphers_and_challenges/active_batch*
