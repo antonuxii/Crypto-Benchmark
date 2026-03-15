@@ -8,3 +8,4 @@ tasks-venv/
 oracle_outputs.txt
 ciphers_and_challenges/oracle_outputs.txt
 ciphers_and_challenges/active_batch*
+benchmark/

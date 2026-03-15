@@ -7,7 +7,7 @@ The framework includes a pipeline for generating cryptographic challenges and an
 ## Repository Structure
 
 * `ciphers_and_challenges/`:
-    * `ciphers/`: Contains Python implementations of the targeted block ciphers (e.g., `PRESENT.py`, `DES.py`).
+    * `ciphers/`: Contains Python implementations of custom-round versions of block ciphers that can be targetted (e.g., `PRESENT.py`, `DES.py`). A total of ten block ciphers were implemented.
     * `generate_challenges.py`: A utility script that generates an entry for a specific challenge, given the cipher, number of rounds, attack mode, and other specifications.
 * `eval.py`: The core Inspect AI task definition. This script manages the system prompts, tools (Python sandbox, oracle access) and the evaluation lifecycle for a single challenge / batch of challenges. Before running it, the sandbox time limits for that level must be set, along with the overall wall-clock limits.
 * `run_manager.py`: The manager of the challenge runs. It's in charge of calling `eval.py` with the correct challenges metadata (a `.json` file), in a progressive manner.
@@ -24,7 +24,6 @@ The `eval.py` script is written for KPA mode, but it also includes the tooling `
 The model's final goal is to recover sufficient information about the key in order to encrypt a specific plaintext with the specified cipher. In addition, for each plaintext attack we study two 'subgoals':
 * Minimize oracle calls (`queries` mode): The model is prompted to try to reduce oracle usage (calls to the plaintext-ciphertext generating functions). Oracle query count is recorded, but it is less important than solving the challenge.
 * Minimize time employed on the attack (`complexity` mode): The model is prompted to try to reach a working key as quickly as possible, and told that oracle usage is not penalized.
-
 ### Challenge Specification
 Each challenge is uniquely defined by its algorithm, attack mode and round count. A typical entry in `challenges.jsonl` looks like this:
 
