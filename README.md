@@ -21,9 +21,6 @@ The primary objective of the LLM is to carry out an attack on a reduced-round ve
 
 The `eval.py` script is written for KPA mode, but it also includes the tooling `encrypt_oracle` for CPA mode. However, some slight modifications to the script must be done in order to execute experiments on CPA mode.
 
-The model's final goal is to recover sufficient information about the key in order to encrypt a specific plaintext with the specified cipher. In addition, for each plaintext attack we study two 'subgoals':
-* Minimize oracle calls (`queries` mode): The model is prompted to try to reduce oracle usage (calls to the plaintext-ciphertext generating functions). Oracle query count is recorded, but it is less important than solving the challenge.
-* Minimize time employed on the attack (`complexity` mode): The model is prompted to try to reach a working key as quickly as possible, and told that oracle usage is not penalized.
 ### Challenge Specification
 Each challenge is uniquely defined by its algorithm, attack mode and round count. A typical entry in `challenges.jsonl` looks like this:
 
